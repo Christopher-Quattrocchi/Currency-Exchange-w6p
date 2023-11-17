@@ -18,9 +18,19 @@
     <form>
       <label for="location">Enter an amount in dollars:</label>
       <input id="dollar-amount" type="number" name="dollar-amount">
+      <p id="from-currency"></p>
+      <select name="from-currency" id="from-currency">
+        <option value="USD">US Dollars</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Sterling</option>
+        <option value="JPY">Japanese Yen</option>
+        <option value="CHF">Swiss Franc</option>
+        <option value="INR">Indian Rupee</option>
+      </select>
       <!-- <label for="currency">Enter which currency to convert to:</label>
       <input id="currency" type="text" name="currency"> -->
-      <select name="currency" id="currency">
+      <select name="to-currency" id="to-currency">
+        <option value="USD">US Dollars</option>
         <option value="EUR">Euro</option>
         <option value="GBP">British Sterling</option>
         <option value="JPY">Japanese Yen</option>

@@ -5,38 +5,38 @@ import CurrencyService from './currency-service.js';
 
 // Business Logic
 
-function getCoin(dollarAmount, currencyKey) {
+function getCoin(dollarAmount, toCurrency) {
   let rates = sessionStorage.getItem('currencyRates');
 
   if (rates) {
     rates = JSON.parse(rates);
-    let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, rates);
-    printElements(convertedAmount, dollarAmount, currencyKey);
+    let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, toCurrency, rates);
+    printElements(convertedAmount, dollarAmount, toCurrency);
   } else {
-    CurrencyService.getCoin(dollarAmount, currencyKey)
+    CurrencyService.getCoin(dollarAmount, toCurrency)
       .then(function (response) {
         if (response.rates) {
           sessionStorage.setItem('currencyRates', JSON.stringify(response.rates));
-          let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, response.rates);
-          printElements(convertedAmount, dollarAmount, currencyKey);
+          let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, toCurrency, response.rates);
+          printElements(convertedAmount, dollarAmount, toCurrency);
         } else {
-          printError(response, dollarAmount, currencyKey);
+          printError(response, dollarAmount, toCurrency);
         }
       })
       .catch(function (error) {
-        printError(error, dollarAmount, currencyKey);
+        printError(error, dollarAmount, toCurrency);
       });
   }
 }
 // UI Logic
 
-function printElements(convertedAmount, dollarAmount, currencyKey) {
+function printElements(convertedAmount, dollarAmount, toCurrency) {
   // console.log("In printElements:", results);
-  document.querySelector('#showResponse').innerText = `${dollarAmount} USD is worth ${convertedAmount} ${currencyKey}`;
+  document.querySelector('#showResponse').innerText = `${dollarAmount} USD is worth ${convertedAmount} ${toCurrency}`;
 }
 
-function printError(error, dollarAmount, currencyKey) {
-  document.querySelector('#showResponse').innerText = `There was an error converting ${dollarAmount} USD to ${currencyKey}: ${error}.`;
+function printError(error, dollarAmount, toCurrency) {
+  document.querySelector('#showResponse').innerText = `There was an error converting ${dollarAmount} USD to ${toCurrency}: ${error}.`;
 }
 
 // function currencySelect(currency) {
@@ -62,12 +62,13 @@ function printError(error, dollarAmount, currencyKey) {
 function handleFormSubmission(event) {
   event.preventDefault();
   // debugger;
+  const fromCurrency = document.getElementById('from-currency').value;
   const dollarAmount = document.querySelector('#dollar-amount').value;
-  let currencyKey = document.querySelector('#currency').value;
+  let toCurrency = document.getElementById('to-currency').value;
   document.querySelector('#dollar-amount').value = null;
   // document.querySelector('#currency').value = null;
   // let currencyKey = currencySelect(currency);
-  getCoin(dollarAmount, currencyKey);
+  getCoin(dollarAmount, toCurrency);
 }
 
 window.addEventListener("load", function () {

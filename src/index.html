@@ -6,18 +6,18 @@
 
 <body>
   <div class="container">
-    <h1>Get Weather Conditions From Anywhere!</h1>
-    <p>To get the current weather conditions for a location, please enter the city name or the city and state separated
-      by a comma. Here are three examples:</p>
+    <h1>Convert USD to other currenies</h1>
+    <p>Enter amount in USD and which currency you'd like to convert to:</p>
     <pre>
-      Portland
-      Atlanta, Georgia
-      cairo
+      Euro
+      Etc
     </pre>
     <form>
-      <label for="location">Enter a location:</label>
-      <input id="location" type="text" name="location">
-      <button type="submit" class="btn-success" id="weatherLocation">Get Current Temperature and Humidity</button>
+      <label for="location">Enter an amount in dollars:</label>
+      <input id="dollar-amount" type="number" name="dollar-amount">
+      <label for="currency">Enter which currency to convert to:</label>
+      <input id="currency" type="text" name="currency">
+      <button type="submit" class="btn-success" id="exchange">Get Current Temperature and Humidity</button>
     </form>
     <p id="showResponse"></p>
   </div>

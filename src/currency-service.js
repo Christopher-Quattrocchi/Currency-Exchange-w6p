@@ -1,6 +1,6 @@
-export default class WeatherService {
-  static getWeather(city) {
-    return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`)
+export default class CurrencyService {
+  static getCoin(dollarAmount, currencyKey) {
+    return fetch(`https://api.exchangerate-api.com/v4/latest/USD?apiKey=${process.env.API_KEY}`)
       .then(function (response) {
         if (!response.ok) {
           return response.json()
@@ -17,4 +17,7 @@ export default class WeatherService {
         return error;
       });
   }
+  // exchangeCalculator() {
+  // }
 }
+

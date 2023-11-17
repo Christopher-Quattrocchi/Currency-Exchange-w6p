@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h1>Convert USD to other currenies</h1>
-    <p>Enter amount in USD and which currency you'd like to convert to:</p>
+    <p>Enter amount in a chosen currency to convert to another chosen currency:</p>
     <pre>
       Euro
       British Pound 
@@ -16,9 +16,9 @@
       Indian Rupee
     </pre>
     <form>
-      <label for="location">Enter an amount in dollars:</label>
+      <label for="location">Amount in chosen currency:</label>
       <input id="dollar-amount" type="number" name="dollar-amount">
-      <p id="from-currency"></p>
+      <p id="from-currency-info">Convert from this currency:</p>
       <select name="from-currency" id="from-currency">
         <option value="USD">US Dollars</option>
         <option value="EUR">Euro</option>
@@ -29,6 +29,7 @@
       </select>
       <!-- <label for="currency">Enter which currency to convert to:</label>
       <input id="currency" type="text" name="currency"> -->
+      <p id="to-currency-info">Convert to this currency:</p>
       <select name="to-currency" id="to-currency">
         <option value="USD">US Dollars</option>
         <option value="EUR">Euro</option>
@@ -37,7 +38,7 @@
         <option value="CHF">Swiss Franc</option>
         <option value="INR">Indian Rupee</option>
       </select>
-      <button type="submit" class="btn-success" id="exchange">Get Current Temperature and Humidity</button>
+      <button type="submit" class="btn-success" id="exchange">Convert</button>
     </form>
     <p id="showResponse"></p>
   </div>

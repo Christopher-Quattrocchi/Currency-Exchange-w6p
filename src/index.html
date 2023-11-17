@@ -18,8 +18,15 @@
     <form>
       <label for="location">Enter an amount in dollars:</label>
       <input id="dollar-amount" type="number" name="dollar-amount">
-      <label for="currency">Enter which currency to convert to:</label>
-      <input id="currency" type="text" name="currency">
+      <!-- <label for="currency">Enter which currency to convert to:</label>
+      <input id="currency" type="text" name="currency"> -->
+      <select name="currency" id="currency">
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Sterling</option>
+        <option value="JPY">Japanese Yen</option>
+        <option value="CHF">Swiss Franc</option>
+        <option value="INR">Indian Rupee</option>
+      </select>
       <button type="submit" class="btn-success" id="exchange">Get Current Temperature and Humidity</button>
     </form>
     <p id="showResponse"></p>

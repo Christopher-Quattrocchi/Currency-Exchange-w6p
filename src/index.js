@@ -6,18 +6,27 @@ import CurrencyService from './currency-service.js';
 // Business Logic
 
 function getCoin(dollarAmount, currencyKey) {
-  CurrencyService.getCoin(dollarAmount, currencyKey)
-    .then(function (response) {
-      if (response.rates) {
-        let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, response);
-        printElements(convertedAmount, dollarAmount, currencyKey);
-      } else {
-        printError(response, dollarAmount, currencyKey);
-      }
-    })
-    .catch(function(error) {
-      printError(error, dollarAmount, currencyKey);
-    });
+  let rates = sessionStorage.getItem('currencyRates');
+
+  if (rates) {
+    rates = JSON.parse(rates);
+    let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, rates);
+    printElements(convertedAmount, dollarAmount, currencyKey);
+  } else {
+    CurrencyService.getCoin(dollarAmount, currencyKey)
+      .then(function (response) {
+        if (response.rates) {
+          sessionStorage.setItem('currencyRates', JSON.stringify(response.rates));
+          let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, response.rates);
+          printElements(convertedAmount, dollarAmount, currencyKey);
+        } else {
+          printError(response, dollarAmount, currencyKey);
+        }
+      })
+      .catch(function (error) {
+        printError(error, dollarAmount, currencyKey);
+      });
+  }
 }
 // UI Logic
 

@@ -1,3 +1,4 @@
+
 export default class CurrencyService {
   static getCoin(dollarAmount, currencyKey) {
     return fetch(`https://api.exchangerate-api.com/v4/latest/USD?apiKey=${process.env.API_KEY}`)
@@ -17,9 +18,9 @@ export default class CurrencyService {
         return error;
       });
   }
-  static exchangeCalculator(dollarAmount, currencyKey, response) {
-    if (response && response.rates[currencyKey]) {
-      let outputAmount = dollarAmount * response.rates[currencyKey];
+  static exchangeCalculator(dollarAmount, currencyKey, rates) {
+    if (rates && rates[currencyKey]) {
+      let outputAmount = dollarAmount * rates[currencyKey];
       return outputAmount;
     } else {
       throw new Error('Invalid response or currency key')
@@ -27,4 +28,3 @@ export default class CurrencyService {
 
   }
 }
-

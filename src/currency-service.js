@@ -17,7 +17,14 @@ export default class CurrencyService {
         return error;
       });
   }
-  // exchangeCalculator() {
-  // }
+  static exchangeCalculator(dollarAmount, currencyKey, response) {
+    if (response && response.rates[currencyKey]) {
+      let outputAmount = dollarAmount * response.rates[currencyKey];
+      return outputAmount;
+    } else {
+      throw new Error('Invalid response or currency key')
+    }
+
+  }
 }
 

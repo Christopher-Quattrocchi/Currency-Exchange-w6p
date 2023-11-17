@@ -9,17 +9,21 @@ function getCoin(dollarAmount, currencyKey) {
   CurrencyService.getCoin(dollarAmount, currencyKey)
     .then(function (response) {
       if (response.rates) {
-        printElements(response.rates, dollarAmount, currencyKey);
+        let convertedAmount = CurrencyService.exchangeCalculator(dollarAmount, currencyKey, response);
+        printElements(convertedAmount, dollarAmount, currencyKey);
       } else {
         printError(response, dollarAmount, currencyKey);
       }
+    })
+    .catch(function(error) {
+      printError(error, dollarAmount, currencyKey);
     });
 }
 // UI Logic
 
-function printElements(response, dollarAmount, currencyKey) {
+function printElements(convertedAmount, dollarAmount, currencyKey) {
   // console.log("In printElements:", results);
-  document.querySelector('#showResponse').innerText = `${dollarAmount} USD is worth ${response[currencyKey]} ${currencyKey}`;
+  document.querySelector('#showResponse').innerText = `${dollarAmount} USD is worth ${convertedAmount} ${currencyKey}`;
 }
 
 function printError(error, dollarAmount, currencyKey) {

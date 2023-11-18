@@ -59,8 +59,10 @@ If currency doesn't exist, say so in error
 
 Secondary objectives:
 
+COMPLETE
 Allow to convert between all currency types
 
+COMPLETE
 Allow to convert to and from US dollars
 
 COMPLETE

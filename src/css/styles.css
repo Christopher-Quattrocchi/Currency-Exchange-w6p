@@ -4,5 +4,22 @@ body {
   background-position:center;
   background-size:cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   color: bisque;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-success {
+  background-color: #1a59b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-height: 40px;
+  max-width: 100px;
+}
+
+.btn-success:hover {
+  background-color: rgb(9, 33, 170);
 }

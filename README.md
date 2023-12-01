@@ -25,6 +25,8 @@ This application harnesses the power of JavaScript, CSS, and HTML along with an 
 ## Setup/Installation Requirements
 - Clone the project repository.
 - Navigate to the project directory.
+- Go to https://www.exchangerate-api.com/ and get an API key
+- In the root of the project folder, create a file named .env, and enter the line "API_KEY=YOURKEYHERE"
 - Run `npm install` to install dependencies.
 - Execute `npm run start` to start the application.
 
